@@ -18,6 +18,12 @@ function f_generar_numeros(min_number, max_number)
     {
         ind_par = true;
     }
+/*DEBE EXISTIR DIFERENCIA MAYOR A CERO SI SE SELECCIONA NUMEROS PARES O IMPARES */
+    if(max_number-min_number == 0 && (ind_impar || ind_par))
+    {
+        alert(`La Diferencia Entre En Numero De Inicio y El De Termino Debe Ser Mayor a 0, en caso de Tener Seleccionado Solo Números Pares o Impares`)
+        return;
+    }
 
     let div_numbers = '';
     for(let i = 0; i<cant_numeros; i++)
@@ -27,18 +33,18 @@ function f_generar_numeros(min_number, max_number)
         if(ind_impar)
         {
             do {/* SE GENERA NUMERO PERO ESTO DEBE SER IMPAR */
-                num_aleatorio = Math.floor(Math.random() * (max_number - min_number + 1)) + min_number;
+                num_aleatorio = f_numero_azar(min_number, max_number);
             } while (num_aleatorio%2==0);
         }
         else if(ind_par)/* SE GENERA NUMERO PERO ESTO DEBE SER PAR */
         {
             do {
-                num_aleatorio = Math.floor(Math.random() * (max_number - min_number + 1)) + min_number;
+                num_aleatorio = f_numero_azar(min_number, max_number);
             } while (num_aleatorio%2!=0);
         }
         else/* SE GENERA NUMERO NO IMPORTA SI ES PAR O IMPAR*/
         {
-            num_aleatorio = Math.floor(Math.random() * (max_number - min_number + 1)) + min_number;
+            num_aleatorio = f_numero_azar(min_number, max_number);
         }
 
         numeros[i] = num_aleatorio;
@@ -93,7 +99,6 @@ function f_orden(ind_orden)
 /*ORDENAR DE MENOR A MAYOR EL ARRAY PASADO POR PARAMETRO */
 function f_order_asc(listado_numeros)
 {
-    let div_numbers = '';
     listado_numeros.sort(function(a, b){return a- b});
     f_pintar_numeros(listado_numeros);
     return;
@@ -101,12 +106,11 @@ function f_order_asc(listado_numeros)
 /*ORDENAR DE MAYOR A MENOR EL ARRAY PASADO POR PARAMETRO*/
 function f_order_desc(listado_numeros)
 {
-    let div_numbers = '';
     listado_numeros.sort(function(a, b){return b- a});
     f_pintar_numeros(listado_numeros);
     return;
 }
-/**FUCNIO PARA ANTES DE GENERAR O ORDENAR DATOS */
+/**FUCNIO PARA ANTES DE GENERAR O ORDENAR DATOS, ESTA FUNCION VALIDA LAS CONDICIONES NECESARIOAS PARA EL CORRECTO FUNCIONAMIENTO */
 function f_validar()
 {
     let dato_desde = document.getElementById("desde").value;
@@ -149,4 +153,10 @@ function f_validar()
 
     f_generar_numeros(dato_desde, dato_hasta);
     return
+}
+
+/*FUNCION PARA RECPERAR NUMERO ALEATORIO */
+function f_numero_azar(min_number, max_number)
+{
+    return Math.floor(Math.random() * (max_number - min_number + 1)) + min_number;
 }

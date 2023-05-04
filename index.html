@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" src="codigo.js"></script>
+    <div>
+        <div class="datos">
+            <p>Desde</p><input id="desde" type="text">
+            <p>Hasta</p><input id="hasta" type="text">
+        </div>
+        <div id="main_container" class="contenedor_base">
+        </div>
+        <div>
+            <div>
+                <button onclick="f_validar()">Generar Números</button>
+                <select name="seleccionar_tipo" id="tipo">
+                    <option value="1">Impares</option>
+                    <option value="2">Pares</option>
+                    <option value="0" selected>Todos</option>
+                </select>
+            </div>
+            <br>
+            <button onclick="f_orden(1)">Ordenar Ascendente</button>
+            <button onclick="f_orden(2)">Ordenar Descendente</button>
+        </div>
+    </div>
+</body>
+</html>

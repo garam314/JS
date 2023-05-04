@@ -1,0 +1,35 @@
+.contenedor_base
+{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 0px;
+    flex-wrap: wrap;
+    background-color: ghostwhite;
+}
+
+.celda
+{
+    width: 100px;
+    height: 100px;
+    background-color:gainsboro;
+    text-align: center;
+}
+
+.datos
+{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    height: 20px;
+}
+
+body div
+{
+    width: 570px;
+}
+
+p{
+    margin: 0px;
+}

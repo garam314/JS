@@ -1,0 +1,62 @@
+/* Personalización de colores */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --accent-color: black;
+    --dark-color: #343a40;
+    }
+
+/* Personalización del encabezado */
+header {
+background-color: var(--primary-color);
+}
+
+header h1 {
+color: #fff;
+}
+
+/* Personalización del carrusel */
+.carousel-caption {
+background-color: rgba(0, 0, 0, 0.5);
+}.carousel-caption h5, .carousel-caption p {
+color: #fff;
+}
+
+/* Personalización del listado de películas */
+h2 {
+color: var(--primary-color);
+}
+
+.card {
+border: 2px solid var(--accent-color);
+}
+
+.card-title,
+.card-text {
+color: var(--dark-color);
+}
+
+.card-body{
+    height: 15lh;
+}
+
+body
+{
+    background-color: white;
+}
+
+
+.seat {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: #e5e5e5;
+    cursor: pointer;
+  }
+  .selected {
+    background-color: #5cb85c;
+  }
+  .reserved {
+    background-color: #f0ad4e;
+    cursor: not-allowed;
+  }

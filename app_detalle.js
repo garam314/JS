@@ -4,29 +4,47 @@ class Reserva
     pelicula = '';
     horario = '';
     asientos = []
-    constructor(pelicula = '', horario = '', asiento = [])
-    {
-        this.pelicula = pelicula;
-        this.horario = horario;
-        this.asientos = asiento
-        
-    }
 
-    get get_pelicula()
+    get_pelicula()
     {
       return this.pelicula
     }
 
-    get get_schedule()
+    get_schedule()
     {
         return this.horario
     }
 
-    get get_seats()
+    get_seats()
     {
         return this.asientos
     }
+
+    set_pelicula(pelicula)
+    {
+      this.pelicula = pelicula
+      return
+    }
+
+    set_schedule(schedule)
+    {
+        this.horario = schedule
+        return
+    }
+
+    set_seats(seats)
+    {
+        this.asientos = seats
+        return
+    }
 }
+
+
+let movie_name
+let movie_schedule
+let movie_asientos = []
+const reserved = new Reserva()
+
 
 function f_load_data()
 {
@@ -37,8 +55,7 @@ function f_load_data()
     let map_movie_picked = new Map(Object.entries(JSON.parse(localStorage.getItem('reservemovieJSON'))));  
 
     //RECUPERAMOS LA PELICULA ESCOGIDA    
-    let movie_name
-    let movie_schedule
+
 
     map_movie_picked.forEach(e => {
         switch (e[0]) {
@@ -57,7 +74,7 @@ function f_load_data()
         }
     });
 
-    let movie_asientos = []
+    
     
     map_reserved_seat.forEach(e => {
         e.forEach(a => {
@@ -65,8 +82,41 @@ function f_load_data()
                 movie_asientos.push(a)
         });
     });
+    reserved.set_pelicula(movie_name)
+    reserved.set_schedule(movie_schedule)
+    reserved.set_seats(movie_asientos)
 
-    const reserve = new Reserva(movie_name, movie_schedule, movie_asientos)
+
+    load_movie()
+    load_ticket()
+    return
+}
+
+
+function load_movie()
+{
+    let div_movie = document.querySelector("#pelicula")
+    let h1 = document.createElement("h3")
+    let p = document.createElement("p")
+
+    h1.textContent = reserved.get_pelicula()
+    p.textContent = "Función: " + reserved.get_schedule()
+    div_movie.append(h1)
+    div_movie.append(p)
+    return
+}
+
+function load_ticket()
+{
+    let div_movie = document.querySelector("#boletos")
+    let h1 = document.createElement("h3")
+    let p = document.createElement("p")
+
+    h1.textContent = reserved.get_pelicula()
+    p.textContent = "Función: " + reserved.get_schedule()
+    div_movie.append(h1)
+    div_movie.append(p)
+    return
 }
 
 

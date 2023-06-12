@@ -4,6 +4,7 @@
     --secondary-color: #6c757d;
     --accent-color: black;
     --dark-color: #343a40;
+    --bg-custom: rgba(5, 5, 5, 0.342);
     }
 
 /* Personalización del encabezado */
@@ -59,4 +60,24 @@ body
   .reserved {
     background-color: #f0ad4e;
     cursor: not-allowed;
+  }
+
+  .bg
+  {
+    background-color: #5cb85c;
+  }
+
+  .bg2
+  {
+    background-color: #f0ad4e;
+  }
+
+  a
+  {
+    text-decoration: none;
+  }
+
+  .bg-gray
+  {
+    background-color: var(--bg-custom);
   }

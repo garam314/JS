@@ -38,7 +38,11 @@
       // Manejo de errores
       console.error('Error al leer el archivo:', error);
     });
-    generateSeats();
+
+    let btn_funcion = document.querySelectorAll('[id^="fun-"]')
+    btn_funcion.forEach(boton => {
+      boton.addEventListener("click", generateSeats)
+    });
   }
 
 
@@ -50,15 +54,19 @@
       let seatSelected = document.querySelector("#selected-seat");
       let seatsSelected = document.querySelector("#selected-seats");
       let reserve_btn = document.querySelector("#reserve-btn");
+      let seats_detail = document.querySelector("#seat-info")
       if (seatCount > 0) {
         seatInfo += selectedSeats.join(", ");
         seatSelected.textContent = seatInfo;
         seatsSelected.textContent = "Total asientos seleccionados: " + seatCount;
         reserve_btn.removeAttribute("disabled");
+        seats_detail.classList.remove("visually-hidden")
+
       } else {
         seatSelected.textContent = "";
         seatsSelected.textContent = "";
         reserve_btn.setAttribute("disabled", "");
+        seats_detail.classList.add("visually-hidden")
       }
   }
 
@@ -78,9 +86,33 @@
         updateSeatInfo();
       }
   }
+
+
   // Generar los asientos y asignar el evento de clic
-  function generateSeats() {
+  function generateSeats(event) {
+      let boton_pressed = event.target
+      if (boton_pressed.classList.contains("btn-info"))
+      {
+        return
+      }
+      selectedSeats.length = 0
+      updateSeatInfo()
+      let reserve_title = document.querySelector("#movie_container")
+      let reserve_schedule = document.querySelector("#det-funcion")
+      let seats_reserve = document.querySelector("#seats-reserve")
+      selectedSeats
+      let boton_funcion = document.querySelectorAll('[id^="fun-"]')
+      boton_funcion.forEach(boton => {
+        boton.classList.remove("btn-info")
+        boton.classList.add("btn-dark")
+      });
+      boton_pressed.classList.add("btn-info")
+      boton_pressed.classList.remove("btn-dark")
+      reserve_title.textContent = "Escoge Tu Asiento"
+      reserve_schedule.textContent = `Funcion: ${boton_pressed.textContent}`
+      seats_reserve.classList.remove("visually-hidden")
       let seatMap = document.querySelector("#seat-map");
+      seatMap.innerHTML = ""
       let filas = 9;
       let asientos_fila = 9;
 

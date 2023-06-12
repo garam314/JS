@@ -2,6 +2,7 @@
   let selectedSeats = [];
   const movie_parameter = new URLSearchParams(window.location.search);
   const pelicula =  movie_parameter.get('pelicula');
+  let horario;
   const filas = 9;
   const asientos_fila = 9;
 
@@ -43,6 +44,9 @@
     btn_funcion.forEach(boton => {
       boton.addEventListener("click", generateSeats)
     });
+
+    let botton_reserve = document.querySelector("#reserve-btn")
+    botton_reserve.addEventListener("click", f_create_reserve)
   }
 
 
@@ -91,6 +95,7 @@
   // Generar los asientos y asignar el evento de clic
   function generateSeats(event) {
       let boton_pressed = event.target
+      horario = boton_pressed.textContent
       if (boton_pressed.classList.contains("btn-info"))
       {
         return
@@ -141,16 +146,29 @@
       }
   }
 
+  function f_create_reserve()
+  {
+    let reserve_seats = new Map()
+    let reserve_movie = new Map()
+    reserve_movie.set("pelicula", pelicula)
+    reserve_movie.set("horario", horario)
+    reserve_seats.set("asientos", selectedSeats)
+    let jsonDatos = JSON.stringify(Array.from(reserve_seats));
+    localStorage.setItem('reserveseatJSON', jsonDatos);
+    jsonDatos = JSON.stringify(Array.from(reserve_movie));
+    localStorage.setItem('reservemovieJSON', jsonDatos);
+
+  }
+
   let json_movies_saves = localStorage.getItem('moviesJSON');
   let array_movies = JSON.parse(json_movies_saves);
   let movies_map = new Map();
-
+  console.log(array_movies)
   array_movies.forEach(function(item){
     movies_map.set(item[0], item[1]);
   });
   let titulo = document.querySelector("#titulo");
   titulo.textContent = movies_map.get(pelicula);
-  console.log(movies_map.get(pelicula));
   // Inicializar la generación de asientos
   document.addEventListener("DOMContentLoaded", f_load_movie())
       

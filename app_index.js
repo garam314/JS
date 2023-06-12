@@ -24,7 +24,7 @@ function f_json_movies()
     buttons.forEach(element => {
         movies.set(element.id, element.name);
     });   
-    var jsonDatos = JSON.stringify(Array.from(movies));
+    let jsonDatos = JSON.stringify(Array.from(movies));
     localStorage.setItem('moviesJSON', jsonDatos);
 }
   

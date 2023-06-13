@@ -97,10 +97,20 @@ function f_load_ticket()
 
 function f_total()
 {
+    let total = 0
+    combos_added.forEach(promocion =>{
+        total += promocion.get_total()
+    })
+    console.log(combos_added)
     let div_total = document.querySelector("#total")
+    let child_div = div_total.querySelector("*")
+    if (child_div != null)
+    {
+        div_total.removeChild(child_div)
+    }
     let seats = reserved.get_seats().length
     let price = reserved.get_price()
-    let total = seats * price
+    total += (seats * price)
     let h4 = document.createElement("h4")
     h4.textContent = total
     div_total.append(h4)
@@ -143,8 +153,22 @@ function f_show_data_combos()
 {
     let div_promocion = document.querySelector("#promocion")
     combos_added.forEach(promocion =>{
-       
+        let parrafo = document.querySelector('[det-prom="' + promocion.get_id() + '"]')
+        if ( parrafo === null)
+        {
+            let p = document.createElement("p")
+            p.setAttribute("det-prom",promocion.get_id())
+            p.textContent = promocion.get_nombre()
+            div_promocion.append(p)
+            
+        }
+        else
+        {
+            parrafo.textContent = promocion.get_nombre()
+        }
     })
+    f_total()
+
 }
 
 document.addEventListener("DOMContentLoaded", f_load_data())

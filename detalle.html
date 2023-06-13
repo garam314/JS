@@ -17,30 +17,70 @@
             </a>
         </div>
       </header>
-      <div class="container bg">
+      <div class="container bg-dark">
         <div class="mt-md-5">
-            <h1>Detalle Boletos</h1>
+            <h1 class="text-white">Detalle Boletos</h1>
         </div>
-        <div class="row">
-            <div class="col-md-4 p-md-3 bg2">
-                <div id="pelicula" class="mb-md-3 bg">
+        <div class="row bg-gray">
+            <div class="col-md-4 p-md-3">
+                <div id="pelicula" class="mb-md-3 p-2 bg-light">
                 </div>
-                <div id="boletos" class="mb-md-3 bg">
-                    BOLETOS
+                <div id="boletos" class="mb-md-3 p-2 bg-light">
                 </div>
-                <div id="promocion" class="mb-md-3 bg">
+                <div id="promocion" class="mb-md-3 p-2 bg-light">
                     PROMOCIONES
                 </div>
-                <div id="total" class="mb-md-3 bg">
+                <div id="total" class="mb-md-3 p-2 bg-light">
                     TOTAL
                 </div>
             </div>
             <div class="col-lg-8 bg-gray">
-                PROMOCIONES
+                <div class="row justify-content-center gap-3 pt-3 pb-3 ">
+                    <div class="col-md-5 ">
+                        <div class="card border-0">
+                            <img class="rounded-4" src="combos/c1.webp" alt="">
+                            <div class="text-center p-2">
+                                <h5>Valor $3500</h5>
+                                <h6>Combo 1: Palomitas y Bebidas</h6>
+                                <button id="combo-1" class="btn btn-dark">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 ">
+                        <div class="card border-0">
+                            <img class="rounded-4" src="combos/c2.webp" alt="">
+                            <div class="text-center p-2">
+                                <h5>Valor $4500</h5>
+                                <h6>Combo 2: Palomitas y 2 Bebidas</h6>
+                                <button id="combo-2" class="btn btn-dark">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card border-0">
+                            <img class="rounded-4" src="combos/c3.webp" alt="">
+                            <div class="text-center p-2">
+                                <h5>Valor $4000</h5>
+                                <h6>Combo 3: Palomitas, Bebidas, M&M</h6>
+                                <button id="combo-3" class="btn btn-dark">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card border-0">
+                            <img class="rounded-4" src="combos/c4.webp" alt="">
+                            <div class="text-center p-2">
+                                <h5>Valor $5500</h5>
+                                <h6>Combo 4: Palomitas, Bebidas, M&M</h6>
+                                <button id="combo-4" class="btn btn-dark">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         </div>
       </div>
-      <script src="app_detalle.js"></script>
+      <script type="module" src="app_detalle.js"></script>
 </body>
 </html>

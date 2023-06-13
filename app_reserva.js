@@ -157,6 +157,8 @@
     localStorage.setItem('reserveseatJSON', jsonDatos);
     jsonDatos = JSON.stringify(Array.from(reserve_movie));
     localStorage.setItem('reservemovieJSON', jsonDatos);
+    let url = "./detalle.html"
+    window.open(url, "_blank");
 
   }
 
